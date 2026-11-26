@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vestier de Kathe</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff7fa;
+            color: #333;
+        }
+
+        header {
+            background: #a83268;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+
+        header h1 {
+            font-size: 30px;
+        }
+
+        /* BANNER */
+        .banner {
+            background: linear-gradient(120deg, #7c204c, #e98bb5);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .banner h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .banner p {
+            font-size: 18px;
+        }
+
+        .catalogo {
+            padding: 30px 5%;
+        }
+
+        .catalogo h2 {
+            text-align: center;
+            color: #a83268;
+            margin-bottom: 25px;
+        }
+
+        /* PRODUCTOS */
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .producto {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px #0002;
+        }
+
+        .producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .producto h3 {
+            margin: 12px 0;
+            color: #a83268;
+        }
+
+        .producto p {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: #a83268;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #762044;
+        }
+
+        /* CARRITO */
+        .carrito {
+            background: white;
+            margin: 30px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #0002;
+        }
+
+        .carrito h2 {
+            color: #a83268;
+            margin-bottom: 15px;
+        }
+
+        #lista-carrito {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        #lista-carrito li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .eliminar {
+            background: #777;
+            margin-left: 10px;
+            padding: 5px 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #762044;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 12px;
+        }
+
+        .redes a {
+            color: white;
+            margin: 8px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .redes a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .banner h2 {
+                font-size: 27px;
+            }
+
+            .producto img {
+                height: 190px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Vestier de Kathe</h1>
+        <p>Moda, estilo y elegancia para ti</p>
+    </header>
+
+    <!-- PUNTO 2: BANNER -->
+    <section class="banner">
+        <h2>¡Renueva tu estilo!</h2>
+        <p>Descubre nuestra colección de prendas de vestir.</p>
+        <p>Encuentra tu look ideal en Vestier de Kathe.</p>
+    </section>
+
+    <!-- PUNTO 1: CATÁLOGO DE 20 PRENDAS -->
+    <section class="catalogo">
+        <h2>Nuestra colección</h2>
+        <div class="productos" id="productos"></div>
+    </section>
+
+    <!-- CARRITO DE COMPRAS -->
+    <section class="carrito">
+        <h2>Carrito de compras</h2>
+        <ul id="lista-carrito"></ul>
+        <h3>Total: <span id="total">$0</span> COP</h3>
+        <br>
+        <button id="comprar">Finalizar compra por WhatsApp</button>
+    </section>
+
+    <!-- PUNTO 3: FOOTER Y REDES SOCIALES -->
+    <footer>
+        <h3>Vestier de Kathe</h3>
+        <p>Gracias por elegirnos. ¡Viste a tu manera!</p>
+
+        <div class="redes">
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+            <a href="https://wa.me/573009099523" target="_blank">WhatsApp</a>
+        </div>
+
+        <p>© 2026 Vestier de Kathe. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // 20 PRODUCTOS DE LA TIENDA
+        const prendas = [
+            ["Blusa rosada", 45000, "blusa_rosada.jpg"],
+            ["Blusa blanca", 40000, "blusa_blanca.jpg"],
+            ["Blusa negra", 42000, "blusa_negra.jpg"],
+            ["Blusa lila", 45000, "blusa_lila.jpg"],
+            ["Blusa roja", 45000, "blusa_roja.jpg"],
+            ["Vestido floral", 85000, "vestido_floral.jpg"],
+            ["Vestido rojo", 90000, "vestido_rojo.jpg"],
+            ["Vestido negro", 95000, "vestido_negro.jpg"],
+            ["Vestido rosa", 85000, "vestido_rosa.jpg"],
+            ["Vestido verde", 88000, "vestido_verde.jpg"],
+            ["Jean claro", 90000, "jean_claro.jpg"],
+            ["Pantalón negro", 85000, "pantalon_negro.jpg"],
+            ["Pantalón beige", 85000, "pantalon_beige.jpg"],
+            ["Jean azul", 95000, "jean_azul.jpg"],
+            ["Jean oscuro", 95000, "jean_oscuro.jpg"],
+            ["Falda negra", 55000, "falda_negra.jpg"],
+            ["Falda beige", 55000, "falda_beige.jpg"],
+            ["Falda vinotinto", 60000, "falda_vinotinto.jpg"],
+            ["Chaqueta rosa", 120000, "chaqueta_rosa.jpg"],
+            ["Blazer negro", 130000, "blazer_negro.jpg"]
+        ];
+
+        const contenedor = document.getElementById("productos");
+        const listaCarrito = document.getElementById("lista-carrito");
+        const totalTexto = document.getElementById("total");
+
+        let carrito = [];
+
+        // MOSTRAR LAS 20 PRENDAS
+        prendas.forEach((prenda, indice) => {
+            const producto = document.createElement("div");
+            producto.className = "producto";
+
+            const imagen = document.createElement("img");
+            imagen.src = "imagenes/" + prenda[2];
+            imagen.alt = prenda[0];
+
+            imagen.onerror = function() {
+                this.alt = "Imagen pendiente de subir: " + prenda[0];
+            };
+
+            const nombre = document.createElement("h3");
+            nombre.textContent = prenda[0];
+
+            const precio = document.createElement("p");
+            precio.textContent = "$" + prenda[1].toLocaleString("es-CO") + " COP";
+
+            const boton = document.createElement("button");
+            boton.textContent = "Agregar al carrito";
+            boton.addEventListener("click", () => agregar(indice));
+
+            producto.append(imagen, nombre, precio, boton);
+            contenedor.appendChild(producto);
+        });
+
+        // AGREGAR PRODUCTOS
+        function agregar(indice) {
+            carrito.push(prendas[indice]);
+            actualizarCarrito();
+        }
+
+        // ACTUALIZAR CARRITO
+        function actualizarCarrito() {
+            listaCarrito.innerHTML = "";
+            let total = 0;
+
+            carrito.forEach((producto, indice) => {
+                total += producto[1];
+
+                const item = document.createElement("li");
+                item.textContent =
+                    producto[0] + " - $" +
+                    producto[1].toLocaleString("es-CO") + " COP ";
+
+                const eliminar = document.createElement("button");
+                eliminar.textContent = "Quitar";
+                eliminar.className = "eliminar";
+
+                eliminar.addEventListener("click", () => {
+                    carrito.splice(indice, 1);
+                    actualizarCarrito();
+                });
+
+                item.appendChild(eliminar);
+                listaCarrito.appendChild(item);
+            });
+
+            totalTexto.textContent = total.toLocaleString("es-CO");
+        }
+
+        // PUNTO 4: WHATSAPP DESTINO ACTUALIZADO
+        document.getElementById("comprar").addEventListener("click", () => {
+
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
+
+            let mensaje = "Hola, quiero realizar este pedido:%0A";
+            let total = 0;
+
+            carrito.forEach(producto => {
+                mensaje += "- " + producto[0] +
+                    " - $" + producto[1].toLocaleString("es-CO") + " COP%0A";
+
+                total += producto[1];
+            });
+
+            mensaje += "%0ATotal: $" +
+                total.toLocaleString("es-CO") + " COP";
+
+            const telefono = "573009099523";
+
+            const enlace = "https://wa.me/" +
+                telefono + "?text=" + encodeURIComponent(
+                    mensaje.replace(/%0A/g, "\n")
+                );
+
+            window.open(enlace, "_blank");
+        });
+    </script>
+
+</body>
+  </html>
+  
